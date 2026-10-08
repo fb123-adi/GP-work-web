@@ -1,16 +1,15 @@
-# Publishes the app in project/ to GitHub Pages on every push to main.
-# One-time setup: repo Settings → Pages → Source: "GitHub Actions".
+# Publishes the app in project/ to the gh-pages branch on every push to main.
+# GitHub Pages serves the site from that branch.
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
+    paths: ['project/**']
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -19,14 +18,11 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
         with:
-          path: project
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          fetch-depth: 0
+      - name: Push project/ to gh-pages
+        run: |
+          git subtree split --prefix project -b gh-pages-new
+          git push -f origin gh-pages-new:gh-pages
