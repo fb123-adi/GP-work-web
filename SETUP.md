@@ -29,8 +29,8 @@ The admin then signs in on the **Admin** tab with that email and password. You c
 Go to **Project Settings → API**. Copy the **Project URL** and the **anon public** key into `sidadi-config.js`.
 
 ## 5. Publish on GitHub Pages
-1. Push this repository to GitHub. The included workflow (`.github/workflows/pages.yml`) publishes the `project/` folder automatically on every push to `main`.
-2. Go to **Settings → Pages → Source** and choose **GitHub Actions** (one time only).
+1. Push this repository to GitHub. The included workflow (`.github/workflows/pages.yml`) copies the `project/` folder to the `gh-pages` branch on every push to `main`.
+2. GitHub Pages serves the `gh-pages` branch (Settings → Pages → Deploy from a branch → gh-pages / root). The workflow keeps that branch up to date.
 3. Your app will be live at `https://<username>.github.io/<repo>/`.
 4. In Supabase, go to **Authentication → URL Configuration**. Set the **Site URL** to that address and add it under **Redirect URLs** as `https://<username>.github.io/<repo>/**`.
 
