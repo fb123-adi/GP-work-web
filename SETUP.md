@@ -2,7 +2,7 @@
 
 **Before anything else:** open `sidadi-config.js` and fill in every `business` field: address, state, GSTIN, CIN, contact email and phone, grievance email, and court city. These appear on invoices, payslips, the sign-in page and the legal pages. The Legal page lists any fields that are still missing.
 
-Setup takes about 20 minutes. Until you finish step 4, the app runs in **demo mode**, where data is saved in one browser only.
+Setup takes about 20 minutes. Until you finish step 4, the app shows a "not connected yet" screen to everyone who opens it.
 
 ## 1. Create the backend (Supabase, free)
 1. Sign up at https://supabase.com, then click **New project**. Pick the **Mumbai** region.
@@ -29,8 +29,8 @@ The admin then signs in on the **Admin** tab with that email and password. You c
 Go to **Project Settings → API**. Copy the **Project URL** and the **anon public** key into `sidadi-config.js`.
 
 ## 5. Publish on GitHub Pages
-1. Create a repository on GitHub and upload **all** project files and folders: `index.html`, `SIDADI Workspace.dc.html`, `Legal.dc.html`, `support.js`, `sidadi-config.js`, `manifest.webmanifest`, `sw.js`, `LICENSES.md`, and the `icons/`, `fonts/`, `vendor/` and `supabase/` folders.
-2. Go to **Settings → Pages → Deploy from a branch → main / (root)**.
+1. Push this repository to GitHub. The included workflow (`.github/workflows/pages.yml`) publishes the `project/` folder automatically on every push to `main`.
+2. Go to **Settings → Pages → Source** and choose **GitHub Actions** (one time only).
 3. Your app will be live at `https://<username>.github.io/<repo>/`.
 4. In Supabase, go to **Authentication → URL Configuration**. Set the **Site URL** to that address and add it under **Redirect URLs** as `https://<username>.github.io/<repo>/**`.
 
