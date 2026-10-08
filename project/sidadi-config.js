@@ -2,7 +2,7 @@
 
 export default {
   // Supabase → Project Settings → API. The anon key is safe to publish; access is enforced by supabase/setup.sql.
-  // Leave both empty to run in demo mode (data stays in this browser only).
+  // Until both are filled in, the app shows a "not connected yet" screen.
   supabaseUrl: '',
   supabaseAnonKey: '',
 
